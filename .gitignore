@@ -1,5 +1,6 @@
 .svn
 OAuthConsumer.framework
+APIKeys
 
 # osx stuff
 .DS_Store
