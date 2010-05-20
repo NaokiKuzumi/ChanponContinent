@@ -8,9 +8,12 @@ MacOSX+AquaSKKで投稿力の変わらないただひとつのtwitterクライ�
 
 How to use
 	Ctrl+Enterで投稿
-	Command+,(メニューの「設定」)で認証や透明度変更
+	Command+,(メニューの「設定」)で認証やその他設定
 	残り文字数カウントクリックでタイトルバーの表示、非表示変更
 
+
+おかしくなったら@kudzu_naokiへご報告を。
+キーチェーンアクセスでChanponContinent関連のキーを全て消せば初期化できます。
 
 
 ちゃんぽん大陸は大部分がOAuthConsumer及びMGTwitterEingineによって支えられています。
@@ -26,4 +29,3 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 アイコン募集中
 「ちゃんぽんの頭文字Cを使ったらOfficeに紛れてバレないんじゃねーの？」とか「全然関係ないけど私の絵の宣伝に使おう」みたいなあんまり真面目じゃないのを期待してます。
-				   

@@ -20,6 +20,7 @@
 
 
 #import "ChanponSettings.h"
+#import "OAuthConsumer/OAToken.h"
 
 // a string key used to save the token in the keychain.
 #define APPNAME_KEYCHAIN @"ChanponContinent"
@@ -49,7 +50,7 @@
 
 +(void)setAccessToken:(OAToken*)aToken {
 	if(aToken != nil){
-		[aToken storeInDefaultKeychainWithAppName:APPNAME_KEYCHAIN
+		int status = [aToken storeInDefaultKeychainWithAppName:APPNAME_KEYCHAIN
 							  serviceProviderName:ASP_NAME];
 	}
 }

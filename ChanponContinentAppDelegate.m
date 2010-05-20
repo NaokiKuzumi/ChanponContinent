@@ -62,7 +62,7 @@
 	// window settings
 	float alpha = [ChanponSettings getAlpha];
 	if(alpha != 0) {
-		[alphaSlider setFloatValue:alpha];
+		[alphaSlider setFloatValue:alpha * 100];
 		[window setAlphaValue:alpha];
 	}
 	BOOL showTitleBar = [ChanponSettings showTitleBar];
@@ -81,7 +81,7 @@
 	
 	// engines
 	OAToken *accessToken = [ChanponSettings getAccessToken];	
-	if(accessToken != nil && [accessToken.key equalsToString:@""] != NSOrderedSame && [accessToken.secret compare:@""] != NSOrderedSame){
+	if(accessToken != nil && [accessToken.key compare:@""] != NSOrderedSame && [accessToken.secret compare:@""] != NSOrderedSame){
 		[self _setAuthButtons:NO];
 		[twitterEngine setAccessToken:accessToken];
 	}else {
@@ -117,6 +117,7 @@
 	}
 	[NSApp endSheet: authWindow];
 	[authWindow close];
+	[self _reloadSettings];
 }
 
 - (void)toggleTitleBar:(id)sender {
