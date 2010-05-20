@@ -1,6 +1,7 @@
 .svn
 OAuthConsumer.framework
 APIKeys
+TwitterAPIKey.h
 
 # osx stuff
 .DS_Store
