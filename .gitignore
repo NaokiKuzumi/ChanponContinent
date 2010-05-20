@@ -1,0 +1,14 @@
+.svn
+OAuthConsumer.framework
+
+# osx stuff
+.DS_Store
+profile
+
+# backup stuff
+*~
+
+# xcode stuff
+build/*
+*.pbxuser
+*.mode1v3
