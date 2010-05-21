@@ -23,7 +23,11 @@
 #import "OAuthConsumer/OAToken.h"
 
 // a string key used to save the token in the keychain.
+#ifndef DEBUG
 #define APPNAME_KEYCHAIN @"ChanponContinent"
+#else
+#define APPNAME_KEYCHAIN @"ChanponContinentTest"
+#endif
 #define ASP_NAME @"twitter.com"
 
 @implementation ChanponSettings
@@ -33,11 +37,13 @@
 																		[NSNumber numberWithFloat:1.0],
 																		@"YES",
 																		@"NO",
+																		@":",
 																		nil]
 															forKeys:[NSArray arrayWithObjects:
 																		@"alpha",
 																		@"showTitleBar",
 																		@"front",
+																		@"commandIdentifier",
 																		nil]];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 	
@@ -83,6 +89,14 @@
 +(void)setShowTilteBar:(BOOL)doShow {
 	[[NSUserDefaults standardUserDefaults] setBool:doShow forKey:@"showTitleBar"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSString*)commandIdentifier {
+	return [[NSUserDefaults standardUserDefaults] stringForKey:@"commandIdentifier"];
+}
+
++(void)setCommandIdentifier:(NSString*)anIdentifier{
+	// TODO
 }
 
 @end

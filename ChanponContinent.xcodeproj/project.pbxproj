@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* ChanponContinentAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* ChanponContinentAppDelegate.m */; };
+		3521D7EF11A7258100FD7984 /* ChanponCommandController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3521D7EE11A7258100FD7984 /* ChanponCommandController.m */; };
 		35778BD211A2EADB007599D8 /* ChanponTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35778BD111A2EADB007599D8 /* ChanponTextView.m */; };
 		35778E2711A3BD33007599D8 /* Credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 35778E2611A3BD33007599D8 /* Credits.rtfd */; };
 		35951B3E11A4A0A600BE4B20 /* ChanponLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 35951B3D11A4A0A600BE4B20 /* ChanponLabelTextField.m */; };
@@ -55,6 +56,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		3521D7ED11A7258100FD7984 /* ChanponCommandController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanponCommandController.h; sourceTree = "<group>"; };
+		3521D7EE11A7258100FD7984 /* ChanponCommandController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanponCommandController.m; sourceTree = "<group>"; };
 		35671E1511A598F800E11849 /* TwitterAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAPIKey.h; sourceTree = "<group>"; };
 		35778BD011A2EADB007599D8 /* ChanponTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanponTextView.h; sourceTree = "<group>"; };
 		35778BD111A2EADB007599D8 /* ChanponTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanponTextView.m; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 				35671E1511A598F800E11849 /* TwitterAPIKey.h */,
 				35951B4311A5211D00BE4B20 /* ChanponSettings.h */,
 				35951B4411A5211D00BE4B20 /* ChanponSettings.m */,
+				3521D7ED11A7258100FD7984 /* ChanponCommandController.h */,
+				3521D7EE11A7258100FD7984 /* ChanponCommandController.m */,
 				35951B5811A5221B00BE4B20 /* Views */,
 				35951B5C11A5223400BE4B20 /* MGTwitterEngine */,
 			);
@@ -305,6 +310,7 @@
 				35951B7711A5231B00BE4B20 /* NSData+Base64.m in Sources */,
 				35951B7811A5231B00BE4B20 /* NSString+UUID.m in Sources */,
 				35951B9F11A523AB00BE4B20 /* MGTwitterHTTPURLConnection.m in Sources */,
+				3521D7EF11A7258100FD7984 /* ChanponCommandController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

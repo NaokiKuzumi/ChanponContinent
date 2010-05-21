@@ -21,6 +21,7 @@
 #import <Cocoa/Cocoa.h>
 #import <OAuthConsumer/OAToken.h>
 #import "MGTwitterEngine.h"
+#import "ChanponCommandController.h"
 
 @interface ChanponContinentAppDelegate : NSObject <NSApplicationDelegate,MGTwitterEngineDelegate> {
 	// controls all views
@@ -40,6 +41,7 @@
 	IBOutlet NSButton *comeFrontCheck;
 	// else
 	MGTwitterEngine *twitterEngine;
+	ChanponCommandController *commandController;
 	OAToken *requestToken;//,*accessToken;
 }
 - (IBAction)showAuthenticateWindow:(id)sender;
@@ -52,6 +54,8 @@
 - (IBAction)alphaValueChanged:(id)sender;
 - (void)toggleTitleBar:(id)sender;
 - (IBAction)settingsDone:(id)sender;
+
+-(void)clearStatusField;
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSWindow *authWindow;

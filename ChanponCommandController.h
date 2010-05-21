@@ -1,8 +1,8 @@
 //
-//  ChanponSettings.h
+//  ChanponCommandController.h
 //  ChanponContinent
 //
-//  Created by Naoki Kuzumi on 10/05/20.
+//  Created by Naoki Kuzumi on 10/05/22.
 //
 //  Copyright 2010 Naoki Kuzumi
 //  Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -18,27 +18,13 @@
 //  limitations under the License. 
 //
 
-
 #import <Cocoa/Cocoa.h>
-#import <OAuthConsumer/OAToken.h>
 
-@interface ChanponSettings : NSObject {
-	
+
+@interface ChanponCommandController : NSObject {
+	id delegate;
 }
-+(void)setDefaults;
 
-+(OAToken*)getAccessToken;
-+(void)setAccessToken:(OAToken*)aToken;
-
-+(float)getAlpha;
-+(void)setAlpha:(float)aAlpha;
-
-+(BOOL)getShouldComeFront;
-+(void)setShouldComeFront:(BOOL)isFront;
-
-+(BOOL)showTitleBar;
-+(void)setShowTilteBar:(BOOL)doShow;
-
-+(NSString*)commandIdentifier;
-+(void)setCommandIdentifier:(NSString*)anIdentifier;
+- (ChanponCommandController*)initWithDelegate:(id)aDelegate;
+- (NSString*)interpretCommand:(NSString*)statusString;
 @end
