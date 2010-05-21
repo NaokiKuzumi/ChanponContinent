@@ -20,7 +20,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-// just handles Shift + return.
+// just handles Ctrl + return.
 
 @interface ChanponTextView : NSTextView {
 	IBOutlet id target;

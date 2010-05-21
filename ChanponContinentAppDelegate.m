@@ -36,11 +36,31 @@
 #define ASP_NAME @"twitter.com"
 // used only in old unofficial BASIC authentication API. They don't use these strings anymore, so it's just for fun now.
 #define CLIENT_NAME @"ChanponContinent"
-#define CLIENT_VERSION @"0.06"
+#define CLIENT_VERSION @"0.07"
 #define CLIENT_URL @"http://d.hatena.ne.jp/kudzu_naoki/20100519/1274258452"
 #define CLIENT_TOKEN @""
 // things you know
 #define MAX_STATUS_LEN 140
+
+#ifdef DEBUG
+// from http://hmdt.jp/cocoaProg/AppKit/NSResponder/NSResponder.html#section03
+// 
+void showResponderChain(NSResponder* responder)
+{
+    NSLog(@"- Show responder chain?   ");
+    
+    while(true) {
+        NSLog(@"%@", NSStringFromClass([responder class]));
+        responder = [responder nextResponder];
+        
+        if(responder == nil) {
+            break;
+        }
+        printf("-> ");
+	}
+}
+	
+#endif
 
 @implementation ChanponContinentAppDelegate
 
@@ -54,6 +74,12 @@
 
 	[ChanponSettings setDefaults];
 
+#ifdef DEBUG
+	NSLog(@"is key window?: %d",[window isKeyWindow]);
+	showResponderChain([window firstResponder]);
+#endif
+	
+	[self _setKeyWindow];
 	// load all settings
 	[self _reloadSettings];
 }
@@ -68,9 +94,22 @@
 	BOOL showTitleBar = [ChanponSettings showTitleBar];
 	if (showTitleBar == NO) {
 		[window setStyleMask:NSBorderlessWindowMask | NSTexturedBackgroundWindowMask];
+#ifdef DEBUG
+		showResponderChain([window firstResponder]);
+		[window makeKeyWindow];
+		BOOL result = [window isKeyWindow];
+		NSLog(@"keywindow:%d",result);
+		showResponderChain([window firstResponder]);
+#endif
 	}else {
 		[window setStyleMask:(NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask | NSTexturedBackgroundWindowMask)];
 		[window setTitle:@"Chanpon Continent"];
+#ifdef DEBUG
+		showResponderChain([window firstResponder]);
+		BOOL result = [window isKeyWindow];
+		NSLog(@"keywindow:%d",result);
+		showResponderChain([window firstResponder]);
+#endif
 	}
 	BOOL shouldComeFront = [ChanponSettings getShouldComeFront];
 	if (shouldComeFront == NO){
@@ -91,6 +130,13 @@
 	
 }
 
+- (void)_setKeyWindow {
+	// for unknown reason, titleless window can't be the key window.
+	// it should be set to proper style by _reloadSettings.
+	[window setStyleMask:(NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask | NSTexturedBackgroundWindowMask)];
+	[window makeKeyWindow];
+}
+
 -(void)_setAuthButtons:(BOOL)enableAuth {
 	if(enableAuth == YES){
 		[getPINButton setEnabled:YES];
@@ -108,6 +154,8 @@
 }
 
 - (IBAction)settingsDone:(id)sender {
+	[self _setKeyWindow];
+	
 	//first save the settings
 	[ChanponSettings setAlpha:[alphaSlider floatValue]];
 	if([comeFrontCheck state] == NSOnState){
@@ -116,8 +164,11 @@
 		[ChanponSettings setShouldComeFront:NO];
 	}
 	[NSApp endSheet: authWindow];
-	[authWindow close];
+	//[authWindow close];
+	[authWindow orderOut:self];
+	[window makeKeyAndOrderFront:self];
 	[self _reloadSettings];
+
 }
 
 - (void)toggleTitleBar:(id)sender {

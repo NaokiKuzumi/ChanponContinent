@@ -31,6 +31,10 @@
     return self;
 }
 
+- (BOOL)becomeFirstResponder {
+	return YES;
+}
+
 - (void)keyDown:(NSEvent *)event{
 	enum {
 		enterKey = 36,
