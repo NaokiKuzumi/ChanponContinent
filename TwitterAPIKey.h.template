@@ -1,0 +1,5 @@
+#error Enter your own API Keys and remove this line
+// the two keys you get after registering your app at http://twitter.com/apps
+#define CONSUMER_KEY @""
+#define CONSUMER_SECRET @""
+
