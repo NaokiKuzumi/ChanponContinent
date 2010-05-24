@@ -32,6 +32,10 @@
 
 @implementation ChanponSettings
 
++(NSString*)keychainServiceName {
+	return [NSString stringWithFormat:@"%@::xAuth::%@",APPNAME_KEYCHAIN,ASP_NAME];
+}
+
 +(void)setDefaults {
 	NSDictionary* appDefaults = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
 																		[NSNumber numberWithFloat:1.0],
@@ -56,11 +60,39 @@
 
 +(void)setAccessToken:(OAToken*)aToken {
 	if(aToken != nil){
-		int status = [aToken storeInDefaultKeychainWithAppName:APPNAME_KEYCHAIN
+		[aToken storeInDefaultKeychainWithAppName:APPNAME_KEYCHAIN
 							  serviceProviderName:ASP_NAME];
 	}
 }
+/*
+ //OAuthやxAuthについて勘違いしてたのでコメントアウト。verUpの時には消しとこ。
++(NSString*)getUsername{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+}
 
++(void)setUserName:(NSString*)username{
+	[[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSString*)getPasswordForUsername:(NSString*)username {
+	OSStatus status;
+	status = SecKeychainFindGenericPassword (
+											 NULL,           // default keychain
+											 [APPNAME_KEYCHAIN length],             // length of service name
+											 [APPNAME_KEYCHAIN cString],   // service name
+											 10,             // length of account name
+											 "MyUserAcct",   // account name
+											 passwordLength,  // length of password
+											 passwordData,   // pointer to password data
+											 itemRef         // the item reference
+											);
+	
+}
++(void)setPassword:(NSString*)password forUsername:(NSString*)username{
+	
+}
+*/
 +(float)getAlpha {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	return [defaults floatForKey:@"alpha"] / 100;

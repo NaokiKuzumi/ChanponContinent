@@ -16,9 +16,9 @@ How to use
 キーチェーンアクセスでChanponContinent関連のキーを全て消せば初期化できます。
 
 
-ちゃんぽん大陸は大部分がOAuthConsumer及びMGTwitterEingineによって支えられています。
+ちゃんぽん大陸は大部分がOAuthConsumer及びMGTwitterEngineによって支えられています。
 http://code.google.com/p/oauthconsumer/
-http://mattgemmell.com/source
+http://mattgemmell.com/
 
 
 ちゃんぽん大陸はApache Lisence Version2.0に基づいてライセンスされます。

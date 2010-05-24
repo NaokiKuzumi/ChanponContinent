@@ -75,6 +75,7 @@ void showResponderChain(NSResponder* responder)
 	twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
 	[twitterEngine setClientName:CLIENT_NAME version:CLIENT_VERSION URL:CLIENT_URL token:CLIENT_TOKEN];
 	[twitterEngine setConsumerKey:CONSUMER_KEY secret:CONSUMER_SECRET];
+	connectionDictionary = [[NSMutableDictionary alloc] init];
 	
 	commandController = [[ChanponCommandController alloc] initWithDelegate:self];
 	
@@ -155,6 +156,8 @@ void showResponderChain(NSResponder* responder)
 	
 	NSLog(@"posting: %@",treatedText);
 	[twitterEngine sendUpdate:treatedText];
+//	[connectionDictionary [twitterEngine sendUpdate:treatedText]];
+	[self clearStatusField];
 
 	/*
 
@@ -235,6 +238,15 @@ void showResponderChain(NSResponder* responder)
                 didFinishSelector:@selector(authenticateTokenTicket:didFinishWithData:)
                   didFailSelector:@selector(authenticateTokenTicket:didFailWithError:)];
 	
+}
+
+- (void)dealloc {
+	[twitterEngine release];
+	[connectionDictionary release];
+	[commandController release];
+	 if (statusString) [statusString release];
+	
+	[super dealloc];
 }
 
 #pragma mark modalTextFieldDelegate
@@ -327,12 +339,22 @@ void showResponderChain(NSResponder* responder)
 
 #pragma mark MGTwitterEngineDelegate Methods
 
+- (void)accessTokenReceived:(OAToken *)token forRequest:(NSString *)connectionIdentifier {
+	
+}
+
+- (void)connectionStarted:(NSString *)connectionIdentifier {
+	[progressIndicator startAnimation:self];
+}
+- (void)connectionFinished:(NSString *)connectionIdentifier {
+	if([twitterEngine numberOfConnections] == 0) {
+		[progressIndicator stopAnimation:self];
+	}
+}
+
 - (void)requestSucceeded:(NSString *)connectionIdentifier
 {
     NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
-
-	// clear the status field.
-	[self clearStatusField];
 
 	[label setTextColor:[NSColor blueColor]];
 }

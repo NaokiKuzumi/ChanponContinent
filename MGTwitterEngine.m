@@ -311,6 +311,7 @@
 }
 
 
+
 - (void)closeConnection:(NSString *)connectionIdentifier
 {
     MGTwitterHTTPURLConnection *connection = [_connections objectForKey:connectionIdentifier];

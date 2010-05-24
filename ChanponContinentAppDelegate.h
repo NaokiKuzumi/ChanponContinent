@@ -30,7 +30,8 @@
     NSWindow *window;
 	IBOutlet NSTextField *label;
 	IBOutlet NSTextView *statusField;
-	NSString *statusString;
+	IBOutlet NSProgressIndicator *progressIndicator;
+
 	// settings window stuffs
 	// tab 1
 	NSWindow *authWindow;	
@@ -41,8 +42,10 @@
 	IBOutlet NSButton *comeFrontCheck;
 	// else
 	MGTwitterEngine *twitterEngine;
+	NSMutableDictionary *connectionDictionary;
 	ChanponCommandController *commandController;
 	OAToken *requestToken;//,*accessToken;
+	NSString *statusString;
 }
 - (IBAction)showAuthenticateWindow:(id)sender;
 

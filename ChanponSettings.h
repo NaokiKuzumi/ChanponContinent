@@ -30,6 +30,12 @@
 +(OAToken*)getAccessToken;
 +(void)setAccessToken:(OAToken*)aToken;
 
++(NSString*)getUsername;
++(void)setUserName:(NSString*)username;
+
++(NSString*)getPassword;
++(void)setPassword:(NSString*)password;
+
 +(float)getAlpha;
 +(void)setAlpha:(float)aAlpha;
 
