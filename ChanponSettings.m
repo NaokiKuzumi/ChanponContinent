@@ -64,8 +64,12 @@
 							  serviceProviderName:ASP_NAME];
 	}
 }
-/*
- //OAuthやxAuthについて勘違いしてたのでコメントアウト。verUpの時には消しとこ。
+
++(void)removeAccessToken {
+	[OAToken removeFromKeyChainWithAppName:APPNAME_KEYCHAIN
+					   serviceProviderName:ASP_NAME];
+}
+
 +(NSString*)getUsername{
 	return [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
 }
@@ -75,24 +79,6 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+(NSString*)getPasswordForUsername:(NSString*)username {
-	OSStatus status;
-	status = SecKeychainFindGenericPassword (
-											 NULL,           // default keychain
-											 [APPNAME_KEYCHAIN length],             // length of service name
-											 [APPNAME_KEYCHAIN cString],   // service name
-											 10,             // length of account name
-											 "MyUserAcct",   // account name
-											 passwordLength,  // length of password
-											 passwordData,   // pointer to password data
-											 itemRef         // the item reference
-											);
-	
-}
-+(void)setPassword:(NSString*)password forUsername:(NSString*)username{
-	
-}
-*/
 +(float)getAlpha {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	return [defaults floatForKey:@"alpha"] / 100;

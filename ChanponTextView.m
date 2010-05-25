@@ -39,7 +39,7 @@
 	enum {
 		enterKey = 36,
 	};
-	NSWindow *window;
+
 	if([event keyCode] == enterKey){
 		NSUInteger modifiers = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask;
 		if (modifiers == NSControlKeyMask) {

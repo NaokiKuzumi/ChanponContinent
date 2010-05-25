@@ -34,10 +34,12 @@
 
 	// settings window stuffs
 	// tab 1
-	NSWindow *authWindow;	
-	IBOutlet NSTextField *pinField;
+	NSWindow *authWindow;
+	IBOutlet NSTextField *usernameField,*passwordField;
+	IBOutlet NSTextField *authConditionLabel;
+	IBOutlet NSProgressIndicator *authIndicator;
 	IBOutlet NSSlider *alphaSlider;
-	IBOutlet NSButton *getPINButton,*authButton,*resetButton;
+	IBOutlet NSButton *authButton,*resetButton;
 	// tab 2
 	IBOutlet NSButton *comeFrontCheck;
 	// else
@@ -49,9 +51,7 @@
 }
 - (IBAction)showAuthenticateWindow:(id)sender;
 
-// TODO: change authentication method to xAuth.
-- (IBAction)getPIN:(id)sender;
-- (IBAction)authenticateToken:(id)sender;
+- (IBAction)authenticate:(id)sender;
 - (IBAction)resetAuthentication:(id)sender;
 
 - (IBAction)alphaValueChanged:(id)sender;
