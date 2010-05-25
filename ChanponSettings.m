@@ -32,10 +32,6 @@
 
 @implementation ChanponSettings
 
-+(NSString*)keychainServiceName {
-	return [NSString stringWithFormat:@"%@::xAuth::%@",APPNAME_KEYCHAIN,ASP_NAME];
-}
-
 +(void)setDefaults {
 	NSDictionary* appDefaults = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
 																		[NSNumber numberWithFloat:1.0],
