@@ -31,35 +31,64 @@
 
 -(NSString*)interpretCommand:(NSString *)statusString {
 	NSString *identifier = [ChanponSettings commandIdentifier];
+	NSMutableString *treatedString = [NSMutableString stringWithString:statusString];
 	
-/*	if ([statusString length] > [identifier length] &&
-		[statusString compare:identifier
-					  options:NSCaseInsensitiveSearch 
-						range:[identifier length]] == NSOrderedSame){
- */
 	if ([statusString length] > [identifier length] &&
 		[[statusString substringToIndex:[identifier length]] isEqualToString:identifier] == YES){
 		
-		//command
-#ifdef DEBUG
-		NSLog(@"command came");
-
 		NSString *commandString = [statusString substringFromIndex:[identifier length]];
-		NSLog(@"command: [%@]",commandString);
-		if ([commandString isEqualToString:@"ちゃんぽん大陸"]) {
-			return @"そう、ちゃんぽん大陸ならね。";
-		}
-
-		[delegate clearStatusField];
-		return nil;
-#endif		
-		return statusString;
-	}else {
+		
 #ifdef DEBUG
-		NSLog(@"not a command");
-#endif
-		return statusString;
+		NSLog(@"command came");		
+		NSLog(@"command: [%@]",commandString);
+#endif	
+		
+		// :chanpon command.		
+		if ([commandString isEqualToString:@"chanpon"] || [commandString isEqualToString:@"champon"]) {
+			switch (rand() % 10) {
+				case 0:
+					treatedString = [NSMutableString stringWithString:@"感性を阻害しない唯一のtwitterクライアント。 *ChanponContinent*"];
+					break;
+				case 1:
+					treatedString = [NSMutableString stringWithString:@"SnowLeopardだと、投稿力の変わらないただひとつのtwitterクライアントが使えないって？　ちゃんぽん大陸があるじゃないか！"];
+					break;
+				case 2:
+					treatedString = [NSMutableString stringWithString:@"革命的で魔法のようなクライアント。しかも、信じられないネーミングで。 *ChanponContinent*"];
+					break;
+				case 3:
+					treatedString = [NSMutableString stringWithString:@"呟きのプロから愛されたクライアントをご家庭や仕事場にも。 *ChanponContinent*"];
+					break;
+				case 4:
+					treatedString = [NSMutableString stringWithString:@"きみもちゃんぽん大陸に上陸してみないかい？"];
+					break;
+				case 5:
+					treatedString = [NSMutableString stringWithString:@"TLなんて気にするな。君の発言もみんな気にしてないんだから。 *ChanponContinent*"];
+					break;
+				default:
+					treatedString = [NSMutableString stringWithString:@"そう、ちゃんぽん大陸ならね"];
+					break;
+			}
+			return treatedString; // we need no footers or so now.
+		}
+		
+		// :footer command
+		if([commandString length] >= 6 &&
+		   [[commandString substringToIndex:6] isEqualToString:@"footer"]){
+			NSString *footer;
+			if ([commandString length] >= 8) {
+				footer = [commandString substringFromIndex:8];
+			}else {
+				footer = nil;
+			}
+		}
+		[delegate clearStatusField];
+	
+		return nil;		
 	}
+		
+	// ここでフッター挿入とかする。
+	
+	return treatedString;
 }
 
 @end

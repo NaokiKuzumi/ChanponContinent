@@ -19,6 +19,7 @@
 //
 
 #import "ChanponTextView.h"
+#import "ChanponSettings.h"
 
 
 @implementation ChanponTextView
@@ -42,7 +43,8 @@
 
 	if([event keyCode] == enterKey){
 		NSUInteger modifiers = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask;
-		if (modifiers == NSControlKeyMask) {
+		NSUInteger postKeyModifier = [ChanponSettings getPostKeyModifier];
+		if (modifiers == postKeyModifier) {
 			[NSApp sendAction:@selector(post2twitter) to:target from:self];
 		}else {
 			[super keyDown:event];

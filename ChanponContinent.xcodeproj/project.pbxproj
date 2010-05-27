@@ -10,7 +10,6 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* ChanponContinentAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* ChanponContinentAppDelegate.m */; };
 		3521D7EF11A7258100FD7984 /* ChanponCommandController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3521D7EE11A7258100FD7984 /* ChanponCommandController.m */; };
-		3521D92711A7EE0200FD7984 /* MGTwitterEngine+ChanponMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 3521D92611A7EE0200FD7984 /* MGTwitterEngine+ChanponMethod.m */; };
 		355F122D11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 355F122C11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m */; };
 		355F125711AB31A6007D19A3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355F125611AB31A6007D19A3 /* Security.framework */; };
 		35778BD211A2EADB007599D8 /* ChanponTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35778BD111A2EADB007599D8 /* ChanponTextView.m */; };
@@ -61,8 +60,6 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		3521D7ED11A7258100FD7984 /* ChanponCommandController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanponCommandController.h; sourceTree = "<group>"; };
 		3521D7EE11A7258100FD7984 /* ChanponCommandController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanponCommandController.m; sourceTree = "<group>"; };
-		3521D92511A7EE0200FD7984 /* MGTwitterEngine+ChanponMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MGTwitterEngine+ChanponMethod.h"; sourceTree = "<group>"; };
-		3521D92611A7EE0200FD7984 /* MGTwitterEngine+ChanponMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MGTwitterEngine+ChanponMethod.m"; sourceTree = "<group>"; };
 		355F122C11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAToken+RemoveFromKeychain.m"; sourceTree = "<group>"; };
 		355F125611AB31A6007D19A3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		35671E1511A598F800E11849 /* TwitterAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAPIKey.h; sourceTree = "<group>"; };
@@ -130,8 +127,6 @@
 				355F122C11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m */,
 				3521D7ED11A7258100FD7984 /* ChanponCommandController.h */,
 				3521D7EE11A7258100FD7984 /* ChanponCommandController.m */,
-				3521D92511A7EE0200FD7984 /* MGTwitterEngine+ChanponMethod.h */,
-				3521D92611A7EE0200FD7984 /* MGTwitterEngine+ChanponMethod.m */,
 				35951B5811A5221B00BE4B20 /* Views */,
 				35951B5C11A5223400BE4B20 /* MGTwitterEngine */,
 			);
@@ -323,7 +318,6 @@
 				35951B7811A5231B00BE4B20 /* NSString+UUID.m in Sources */,
 				35951B9F11A523AB00BE4B20 /* MGTwitterHTTPURLConnection.m in Sources */,
 				3521D7EF11A7258100FD7984 /* ChanponCommandController.m in Sources */,
-				3521D92711A7EE0200FD7984 /* MGTwitterEngine+ChanponMethod.m in Sources */,
 				355F122D11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

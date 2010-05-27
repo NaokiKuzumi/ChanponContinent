@@ -42,6 +42,10 @@
 	IBOutlet NSButton *authButton,*resetButton;
 	// tab 2
 	IBOutlet NSButton *comeFrontCheck;
+	// tab 3
+	IBOutlet NSMatrix *postKeyMatrix;
+	IBOutlet NSButtonCell *commandPost,*controlPost,*shiftPost,*altPost; // post key
+	
 	// else
 	MGTwitterEngine *twitterEngine;
 	NSMutableDictionary *connectionDictionary;

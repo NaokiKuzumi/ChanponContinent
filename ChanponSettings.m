@@ -20,7 +20,9 @@
 
 
 #import "ChanponSettings.h"
+
 #import "OAuthConsumer/OAToken.h"
+
 
 // a string key used to save the token in the keychain.
 #ifndef DEBUG
@@ -38,12 +40,16 @@
 																		@"YES",
 																		@"NO",
 																		@":",
+																		[NSNumber numberWithUnsignedInteger:NSControlKeyMask],
+																		@"",
 																		nil]
 															forKeys:[NSArray arrayWithObjects:
 																		@"alpha",
 																		@"showTitleBar",
 																		@"front",
 																		@"commandIdentifier",
+																		@"postKeyModifier",
+																		@"footer",
 																		nil]];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 	
@@ -95,6 +101,23 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
++(NSUInteger)getPostKeyModifier {
+	return [[[NSUserDefaults standardUserDefaults] objectForKey:@"postKeyModifier"] unsignedIntegerValue];
+}
+
++(void)setPostKeyModifier:(NSUInteger)modifierFlag {
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInteger:modifierFlag] forKey:@"postKeyModifier"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSString*)getFooter {
+	return [[NSUserDefaults standardUserDefaults] objectForKey:@"footer"];
+}
+
++(void)setFooter:(NSString*)footerString {
+	[[NSUserDefaults standardUserDefaults] setObject:￼footerString forKey:￼@"footer"];
+}
 
 +(BOOL)showTitleBar {
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showTitleBar"];

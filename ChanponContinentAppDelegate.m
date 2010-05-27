@@ -27,7 +27,7 @@
 
 // used only in old unofficial BASIC authentication API. They don't use these strings anymore, so it's just for fun now.
 #define CLIENT_NAME @"ChanponContinent"
-#define CLIENT_VERSION @"0.09"
+#define CLIENT_VERSION @"0.12"
 #define CLIENT_URL @"http://d.hatena.ne.jp/kudzu_naoki/20100519/1274258452"
 #define CLIENT_TOKEN nil
 // things you know
@@ -76,11 +76,17 @@ void showResponderChain(NSResponder* responder)
 	
 	commandController = [[ChanponCommandController alloc] initWithDelegate:self];
 	
+	
+	// set can quit on setting view.
 	[window setPreventsApplicationTerminationWhenModal:NO];
 	[authWindow setPreventsApplicationTerminationWhenModal:NO];
 	
 	[ChanponSettings setDefaults];
 	[label setIntValue:MAX_STATUS_LEN];
+	[controlPost setRepresentedObject:[NSNumber numberWithUnsignedInteger:NSControlKeyMask]];
+	[commandPost setRepresentedObject:[NSNumber numberWithUnsignedInteger:NSCommandKeyMask]];
+	[shiftPost setRepresentedObject:[NSNumber numberWithUnsignedInteger:NSShiftKeyMask]];
+	[altPost setRepresentedObject:[NSNumber numberWithUnsignedInteger:NSAlternateKeyMask]];
 
 #ifdef DEBUG
 //	NSLog(@"is key window?: %d",[window isKeyWindow]);
@@ -93,15 +99,28 @@ void showResponderChain(NSResponder* responder)
 	[self _reloadSettings];
 }
 
-- (IBAction)settingsDone:(id)sender {
+- (IBAction)settingsDone:(id)sender {	// save all the settings 
 	[self _setKeyWindow];
 	
 	[ChanponSettings setAlpha:[alphaSlider floatValue]];
+	
 	if([comeFrontCheck state] == NSOnState){
 		[ChanponSettings setShouldComeFront:YES];
 	}else {
 		[ChanponSettings setShouldComeFront:NO];
 	}
+	
+	NSEnumerator *enumerator= [[postKeyMatrix cells] objectEnumerator];
+	id obj = nil;
+	NSUInteger mask = 0;
+	while (obj = [enumerator nextObject]){
+		if([obj state] == NSOnState){
+			mask = mask + [[obj representedObject] unsignedIntegerValue];
+		}
+	}
+	[ChanponSettings setPostKeyModifier:mask];
+	
+
 	[NSApp endSheet: authWindow];
 	[authWindow orderOut:self];
 	[window makeKeyAndOrderFront:self];
@@ -167,29 +186,6 @@ void showResponderChain(NSResponder* responder)
 - (IBAction)resetAuthentication:(id)sender {
 	[self _setAuthButtons:YES];
 	[ChanponSettings removeAccessToken];
-}
-
-- (IBAction)getPIN:(id)sender {
-	//NSLog(@"get PIN start");
-	OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:CONSUMER_KEY
-                                                    secret:CONSUMER_SECRET] autorelease];
-	
-    NSURL *url = [NSURL URLWithString:@"http://twitter.com/oauth/request_token"];
-	
-    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
-                                                                   consumer:consumer
-                                                                      token:nil   // we don't have a Token yet
-                                                                      realm:nil   // our service provider doesn't specify a realm
-                                                          signatureProvider:nil] autorelease]; // use the default method, HMAC-SHA1
-	
-    [request setHTTPMethod:@"POST"];
-	
-    OADataFetcher *fetcher = [[OADataFetcher alloc] init];
-	
-    [fetcher fetchDataWithRequest:request
-                         delegate:self
-                didFinishSelector:@selector(requestTokenTicket:didFinishWithData:)
-                  didFailSelector:@selector(requestTokenTicket:didFailWithError:)];
 }
 
 - (void)dealloc {
@@ -288,13 +284,40 @@ void showResponderChain(NSResponder* responder)
 	BOOL shouldComeFront = [ChanponSettings getShouldComeFront];
 	if (shouldComeFront == NO){
 		[window setLevel:NSNormalWindowLevel];
+		[comeFrontCheck setState:NSOffState];
 	}else {
 		[window setLevel:NSFloatingWindowLevel];
+		[comeFrontCheck setState:NSOnState];
 	}
 	// auth window settings
 	if ([ChanponSettings getUsername] != nil) {
 		[usernameField setStringValue:[ChanponSettings getUsername]];
 	}
+	NSUInteger postKeyMask = [ChanponSettings getPostKeyModifier];
+	if (postKeyMask & NSControlKeyMask) {
+		[controlPost setState:NSOnState];
+	}else {
+		[controlPost setState:NSOffState];
+	}
+	if (postKeyMask & NSShiftKeyMask) {
+		[shiftPost setState:NSOnState];
+	}else {
+		[shiftPost setState:NSOffState];
+	}
+	if (postKeyMask & NSCommandKeyMask) {
+		[commandPost setState:NSOnState];
+	}else {
+		[commandPost setState:NSOffState];
+	}
+	if (postKeyMask & NSAlternateKeyMask){
+		[altPost setState:NSOnState];
+	}else {
+		[altPost setState:NSOffState];
+	}
+	
+
+		
+
 
 	// engines
 	OAToken *accessToken = [ChanponSettings getAccessToken];	

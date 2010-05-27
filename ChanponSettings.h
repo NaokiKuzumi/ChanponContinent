@@ -35,15 +35,22 @@
 +(NSString*)getUsername;
 +(void)setUserName:(NSString*)username;
 
-
 +(float)getAlpha;
 +(void)setAlpha:(float)aAlpha;
 
 +(BOOL)getShouldComeFront;
 +(void)setShouldComeFront:(BOOL)isFront;
 
++(NSUInteger)getPostKeyModifier;
++(void)setPostKeyModifier:(NSUInteger)modifierFlag;
+
++(NSString*)getFooter;
++(void)setFooter:(NSString*)footerString;
+
 +(BOOL)showTitleBar;
 +(void)setShowTilteBar:(BOOL)doShow;
+
+
 
 +(NSString*)commandIdentifier;
 +(void)setCommandIdentifier:(NSString*)anIdentifier;
