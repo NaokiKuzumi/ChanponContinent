@@ -326,6 +326,7 @@ void showResponderChain(NSResponder* responder)
 		[twitterEngine setAccessToken:accessToken];
 	}else {
 		[self _setAuthButtons:YES];
+		[settingsTab selectFirstTabViewitem];
 		[self showAuthenticateWindow:self];
 	}
 	

@@ -116,7 +116,8 @@
 }
 
 +(void)setFooter:(NSString*)footerString {
-	[[NSUserDefaults standardUserDefaults] setObject:￼footerString forKey:￼@"footer"];
+	[[NSUserDefaults standardUserDefaults] setObject:footerString forKey:@"footer"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 +(BOOL)showTitleBar {

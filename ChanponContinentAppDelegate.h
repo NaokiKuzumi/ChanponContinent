@@ -33,6 +33,7 @@
 	IBOutlet NSProgressIndicator *progressIndicator;
 
 	// settings window stuffs
+	IBOutlet NSTabView* settingsTab;
 	// tab 1
 	NSWindow *authWindow;
 	IBOutlet NSTextField *usernameField,*passwordField;

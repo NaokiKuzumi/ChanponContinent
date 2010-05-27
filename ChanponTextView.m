@@ -42,7 +42,7 @@
 	};
 
 	if([event keyCode] == enterKey){
-		NSUInteger modifiers = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask;
+		NSUInteger modifiers = [event modifierFlags]  & (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask);
 		NSUInteger postKeyModifier = [ChanponSettings getPostKeyModifier];
 		if (modifiers == postKeyModifier) {
 			[NSApp sendAction:@selector(post2twitter) to:target from:self];
