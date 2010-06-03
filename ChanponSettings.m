@@ -34,6 +34,47 @@
 
 @implementation ChanponSettings
 
+static id _instance = nil;
+
++(id)sharedInstance {
+	@synchronized(self) {
+        if (!_instance) {
+            [[self alloc] init];
+        }
+    }
+    return _instance;
+}
+
++ (id)allocWithZone:(NSZone*)zone {
+    @synchronized(self) {
+        if (!_instance) {
+            _instance = [super allocWithZone:zone];
+            return _instance;
+        }
+    }
+    return nil;
+}
+
+- (id)copyWithZone:(NSZone*)zone {
+    return self;
+}
+
+- (id)retain {
+    return self;
+}
+
+- (unsigned)retainCount {
+    return UINT_MAX;
+}
+
+- (void)release {
+}
+
+- (id)autorelease {
+    return self;
+} 
+
+
 +(void)setDefaults {
 	NSDictionary* appDefaults = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
 																		[NSNumber numberWithFloat:1.0],
@@ -111,13 +152,18 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+(NSString*)getFooter {
-	return [[NSUserDefaults standardUserDefaults] objectForKey:@"footer"];
+-(NSString*)getFooter {
+	return footerString;
+	//return [[NSUserDefaults standardUserDefaults] objectForKey:@"footer"];
 }
 
-+(void)setFooter:(NSString*)footerString {
-	[[NSUserDefaults standardUserDefaults] setObject:footerString forKey:@"footer"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+-(void)setFooter:(NSString*)newFooter {
+	if (footerString) {
+		[footerString release];
+	}
+	footerString = [newFooter copy];
+//	[[NSUserDefaults standardUserDefaults] setObject:footerString forKey:@"footer"];
+//	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 +(BOOL)showTitleBar {

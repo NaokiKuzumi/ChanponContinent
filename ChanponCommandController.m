@@ -72,22 +72,32 @@
 		}
 		
 		// :footer command
+
 		if([commandString length] >= 6 &&
 		   [[commandString substringToIndex:6] isEqualToString:@"footer"]){
 			NSString *footer;
-			if ([commandString length] >= 8) {
-				footer = [commandString substringFromIndex:8];
+			if ([commandString length] >= 6) {
+				footer = [commandString substringFromIndex:6];
 			}else {
 				footer = nil;
 			}
+			[[ChanponSettings sharedInstance] setFooter:footer];
+			[delegate refreshFooter];
 		}
+
 		[delegate clearStatusField];
 	
 		return nil;		
 	}
 		
 	// ここでフッター挿入とかする。
-	
+	if ([[ChanponSettings sharedInstance] getFooter] != nil) {
+#ifdef DEBUG
+		NSLog(@"footer: %@",[[ChanponSettings sharedInstance] getFooter]);
+#endif
+		treatedString = [NSString stringWithFormat:@"%@%@",statusString,[[ChanponSettings sharedInstance] getFooter]];
+	}
+
 	return treatedString;
 }
 

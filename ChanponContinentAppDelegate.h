@@ -28,7 +28,7 @@
 	
 	// main window stuffs
     NSWindow *window;
-	IBOutlet NSTextField *label;
+	IBOutlet NSTextField *label,*footerLabel;
 	IBOutlet NSTextView *statusField;
 	IBOutlet NSProgressIndicator *progressIndicator;
 

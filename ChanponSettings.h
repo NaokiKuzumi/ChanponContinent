@@ -23,8 +23,10 @@
 #import <OAuthConsumer/OAToken.h>
 
 @interface ChanponSettings : NSObject {
-	
+	NSString *footerString;
 }
++(id)sharedInstance;
+
 +(void)setDefaults;
 
 +(OAToken*)getAccessToken;
@@ -44,8 +46,8 @@
 +(NSUInteger)getPostKeyModifier;
 +(void)setPostKeyModifier:(NSUInteger)modifierFlag;
 
-+(NSString*)getFooter;
-+(void)setFooter:(NSString*)footerString;
+-(NSString*)getFooter;
+-(void)setFooter:(NSString*)newFooter;
 
 +(BOOL)showTitleBar;
 +(void)setShowTilteBar:(BOOL)doShow;

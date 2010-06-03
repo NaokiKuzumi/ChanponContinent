@@ -27,7 +27,7 @@
 
 // used only in old unofficial BASIC authentication API. They don't use these strings anymore, so it's just for fun now.
 #define CLIENT_NAME @"ChanponContinent"
-#define CLIENT_VERSION @"0.12"
+#define CLIENT_VERSION @"0.13"
 #define CLIENT_URL @"http://d.hatena.ne.jp/kudzu_naoki/20100519/1274258452"
 #define CLIENT_TOKEN nil
 // things you know
@@ -128,6 +128,12 @@ void showResponderChain(NSResponder* responder)
 
 }
 
+- (void)refreshFooter {
+	[footerLabel setEditable:YES];
+	[footerLabel setStringValue:[[ChanponSettings sharedInstance] getFooter]];
+	[footerLabel setEditable:NO];
+}
+
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
 	return YES;
 }
@@ -162,7 +168,8 @@ void showResponderChain(NSResponder* responder)
 	NSString *treatedText = [statusString precomposedStringWithCanonicalMapping];
 	treatedText = [commandController interpretCommand:treatedText];
     if ([treatedText length] > MAX_STATUS_LEN) {
-        treatedText = [treatedText substringToIndex:MAX_STATUS_LEN];
+		return;
+//		treatedText = [treatedText substringToIndex:MAX_STATUS_LEN];
     }
 	
 	NSLog(@"posting: %@",treatedText);
@@ -204,8 +211,9 @@ void showResponderChain(NSResponder* responder)
 	NSString *normalizedText = [statusString precomposedStringWithCanonicalMapping];
 	[label setEditable:YES];
 	NSInteger len = [normalizedText length];
-	[label setIntValue:MAX_STATUS_LEN - len];
-	if(len > MAX_STATUS_LEN){
+	NSInteger footerlen = [[[ChanponSettings sharedInstance] getFooter] length];
+	[label setIntValue:MAX_STATUS_LEN - len - footerlen];
+	if((len + footerlen) > MAX_STATUS_LEN){
 		[label setTextColor:[NSColor redColor]];
 	}else {
 		[label setTextColor:[NSColor blueColor]];
@@ -326,7 +334,7 @@ void showResponderChain(NSResponder* responder)
 		[twitterEngine setAccessToken:accessToken];
 	}else {
 		[self _setAuthButtons:YES];
-		[settingsTab selectFirstTabViewitem];
+		[settingsTab selectFirstTabViewItem:self];
 		[self showAuthenticateWindow:self];
 	}
 	
