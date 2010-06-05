@@ -63,7 +63,7 @@ static id _instance = nil;
     return self;
 }
 
-- (unsigned)retainCount {
+- (NSUInteger)retainCount {
     return UINT_MAX;
 }
 

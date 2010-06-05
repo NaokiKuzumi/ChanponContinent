@@ -159,7 +159,7 @@ void showResponderChain(NSResponder* responder)
 
 - (void)clearStatusField {
 	[[statusField textStorage] setAttributedString:[[[NSAttributedString alloc] initWithString:@""] autorelease]];
-	[label setIntValue:MAX_STATUS_LEN];
+	[self textDidChange:nil];
 }
 
 - (void)post2twitter {

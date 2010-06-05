@@ -45,12 +45,12 @@
 		
 		// :chanpon command.		
 		if ([commandString isEqualToString:@"chanpon"] || [commandString isEqualToString:@"champon"]) {
-			switch (rand() % 10) {
+			switch (rand() % 9) {
 				case 0:
 					treatedString = [NSMutableString stringWithString:@"感性を阻害しない唯一のtwitterクライアント。 *ChanponContinent*"];
 					break;
 				case 1:
-					treatedString = [NSMutableString stringWithString:@"SnowLeopardだと、投稿力の変わらないただひとつのtwitterクライアントが使えないって？　ちゃんぽん大陸があるじゃないか！"];
+					treatedString = [NSMutableString stringWithString:@"SnowLeopardだと、投稿力の変わらないただひとつのtwitterクライアントが使えないって？　ちゃんぽん大陸があるじゃないか！ *ChanponContinent*"];
 					break;
 				case 2:
 					treatedString = [NSMutableString stringWithString:@"革命的で魔法のようなクライアント。しかも、信じられないネーミングで。 *ChanponContinent*"];
@@ -59,13 +59,19 @@
 					treatedString = [NSMutableString stringWithString:@"呟きのプロから愛されたクライアントをご家庭や仕事場にも。 *ChanponContinent*"];
 					break;
 				case 4:
-					treatedString = [NSMutableString stringWithString:@"きみもちゃんぽん大陸に上陸してみないかい？"];
+					treatedString = [NSMutableString stringWithString:@"きみもちゃんぽん大陸に上陸してみないかい？ *ChanponContinent*"];
 					break;
 				case 5:
 					treatedString = [NSMutableString stringWithString:@"TLなんて気にするな。君の発言もみんな気にしてないんだから。 *ChanponContinent*"];
 					break;
+				case 6:
+					treatedString = [NSMutableString stringWithString:@"いつでも変わらぬ投稿力であなたを待っている。そう、ちゃんぽん大陸ならね。 *ChanponContinent*"];
+					break;
+				case 7:
+					treatedString = [NSMutableString stringWithString:@"なるほどちゃんぽん大陸じゃねーの *ChanponContinent*"];
+					break;
 				default:
-					treatedString = [NSMutableString stringWithString:@"そう、ちゃんぽん大陸ならね"];
+					treatedString = [NSMutableString stringWithString:@"そう、ちゃんぽん大陸ならね *ChanponContinent*"];
 					break;
 			}
 			return treatedString; // we need no footers or so now.
