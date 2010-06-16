@@ -13,7 +13,7 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="609"/>
-			<integer value="372"/>
+			<integer value="626"/>
 			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -1359,25 +1359,25 @@
 						</object>
 						<object class="NSProgressIndicator" id="838063696">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">1292</int>
+							<int key="NSvFlags">1313</int>
 							<object class="NSPSMatrix" key="NSDrawMatrix"/>
 							<string key="NSFrame">{{205, 2}, {16, 16}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<int key="NSpiFlags">28938</int>
 							<double key="NSMaxValue">100</double>
 						</object>
-						<object class="NSTextField" id="741476495">
+						<object class="NSTextField" id="951437156">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">257</int>
 							<string key="NSFrame">{{69, 2}, {131, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="916993123">
+							<object class="NSTextFieldCell" key="NSCell" id="276760705">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">71336960</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="565552205"/>
-								<reference key="NSControlView" ref="741476495"/>
+								<reference key="NSControlView" ref="951437156"/>
 								<bool key="NSDrawsBackground">YES</bool>
 								<reference key="NSBackgroundColor" ref="566021224"/>
 								<object class="NSColor" key="NSTextColor" id="334252756">
@@ -2779,7 +2779,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">footerLabel</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="741476495"/>
+						<reference key="destination" ref="951437156"/>
 					</object>
 					<int key="connectionID">710</int>
 				</object>
@@ -3218,7 +3218,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<reference ref="1022268015"/>
 							<reference ref="838063696"/>
 							<reference ref="672828954"/>
-							<reference ref="741476495"/>
+							<reference ref="951437156"/>
 						</object>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -4120,17 +4120,17 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">708</int>
-						<reference key="object" ref="741476495"/>
+						<reference key="object" ref="951437156"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="916993123"/>
+							<reference ref="276760705"/>
 						</object>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">709</int>
-						<reference key="object" ref="916993123"/>
-						<reference key="parent" ref="741476495"/>
+						<reference key="object" ref="276760705"/>
+						<reference key="parent" ref="951437156"/>
 					</object>
 				</object>
 			</object>
@@ -4705,7 +4705,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">710</int>
+			<int key="maxID">728</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

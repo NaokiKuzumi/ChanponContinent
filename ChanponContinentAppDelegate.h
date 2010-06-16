@@ -24,7 +24,9 @@
 #import "ChanponCommandController.h"
 
 @interface ChanponContinentAppDelegate : NSObject <NSApplicationDelegate,MGTwitterEngineDelegate> {
-	// controls all views
+	// controls two windows.
+	// main tweet window & settings window.
+	// TODO: should've made window controller for each window, and use app delegate as an app delegate.
 	
 	// main window stuffs
     NSWindow *window;
@@ -52,7 +54,10 @@
 	NSMutableDictionary *connectionDictionary;
 	ChanponCommandController *commandController;
 	OAToken *requestToken;//,*accessToken;
+	NSMutableDictionary* TLBaseDataDictionary;
+	NSTimer *reloadTimer;
 	NSString *statusString;
+	
 }
 - (IBAction)showAuthenticateWindow:(id)sender;
 
@@ -67,5 +72,7 @@
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSWindow *authWindow;
+@property (assign) NSMutableDictionary *TLBaseDataDictionary;
+//@property (assign) MGTwitterEngine *twitterEngine;
 
 @end

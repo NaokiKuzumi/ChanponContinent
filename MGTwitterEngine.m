@@ -1064,7 +1064,7 @@
 
 - (NSString *)getHomeTimelineSinceID:(MGTwitterEngineID)sinceID withMaximumID:(MGTwitterEngineID)maxID startingAtPage:(int)page count:(int)count; // statuses/home_timeline
 {
-  NSString *path = [NSString stringWithFormat:@"statuses/home_timeline.%@", API_FORMAT];
+  NSString *path = [NSString stringWithFormat:@"statuses/home_timeline.%@", API_FORMAT]; 
   
   NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
   if (sinceID > 0) {
@@ -1095,7 +1095,7 @@
 
 - (NSString *)getFollowedTimelineSinceID:(MGTwitterEngineID)sinceID withMaximumID:(MGTwitterEngineID)maxID startingAtPage:(int)page count:(int)count
 {
-	NSString *path = [NSString stringWithFormat:@"statuses/friends_timeline.%@", API_FORMAT];
+	NSString *path = [NSString stringWithFormat:@"statuses/friends_timeline.%@", API_FORMAT]; // includes no RTs
 
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
     if (sinceID > 0) {

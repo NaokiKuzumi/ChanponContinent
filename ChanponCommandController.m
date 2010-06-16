@@ -19,6 +19,7 @@
 //
 #import "ChanponCommandController.h"
 #import "ChanponSettings.h"
+#import "ChanponTimeLineWindowController.h"
 
 @implementation ChanponCommandController
 
@@ -43,7 +44,7 @@
 		NSLog(@"command: [%@]",commandString);
 #endif	
 		
-		// :chanpon command.		
+		// :chanpon :champon command.		
 		if ([commandString isEqualToString:@"chanpon"] || [commandString isEqualToString:@"champon"]) {
 			switch (rand() % 9) {
 				case 0:
@@ -56,7 +57,7 @@
 					treatedString = [NSMutableString stringWithString:@"革命的で魔法のようなクライアント。しかも、信じられないネーミングで。 *ChanponContinent*"];
 					break;
 				case 3:
-					treatedString = [NSMutableString stringWithString:@"呟きのプロから愛されたクライアントをご家庭や仕事場にも。 *ChanponContinent*"];
+					treatedString = [NSMutableString stringWithString:@"これまでの軽量クライアントが、それほど軽量に思えなくなるかもしれません。 *ChanponContinent*"];
 					break;
 				case 4:
 					treatedString = [NSMutableString stringWithString:@"きみもちゃんぽん大陸に上陸してみないかい？ *ChanponContinent*"];
@@ -89,11 +90,19 @@
 			}
 			[[ChanponSettings sharedInstance] setFooter:footer];
 			[delegate refreshFooter];
+			return nil;
 		}
+		
+		// :tl / :timeline command
+		if([commandString isEqualToString:@"tl"] || [commandString isEqualToString:@"timeline"]){
+			//[NSBundle loadNibNamed:@"TLWindow" owner:[[ChanponTimeLineWindowController alloc] init]];
+			[[[ChanponTimeLineWindowController alloc] initWithWindowNibName:@"TLWindow"] showWindow:self];
+			
+			return nil;
+		}
+		
 
 		[delegate clearStatusField];
-	
-		return nil;		
 	}
 		
 	// ここでフッター挿入とかする。

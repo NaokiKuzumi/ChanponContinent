@@ -27,7 +27,7 @@
 
 // used only in old unofficial BASIC authentication API. They don't use these strings anymore, so it's just for fun now.
 #define CLIENT_NAME @"ChanponContinent"
-#define CLIENT_VERSION @"0.13"
+#define CLIENT_VERSION @"0.14"
 #define CLIENT_URL @"http://d.hatena.ne.jp/kudzu_naoki/20100519/1274258452"
 #define CLIENT_TOKEN nil
 // things you know
@@ -65,7 +65,7 @@ void showResponderChain(NSResponder* responder)
 
 @implementation ChanponContinentAppDelegate
 
-@synthesize window,authWindow;
+@synthesize window,authWindow,TLBaseDataDictionary;//,twitterEngine;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application 
@@ -75,6 +75,7 @@ void showResponderChain(NSResponder* responder)
 	connectionDictionary = [[NSMutableDictionary alloc] init];
 	
 	commandController = [[ChanponCommandController alloc] initWithDelegate:self];
+	TLBaseDataDictionary = [[NSMutableDictionary alloc] init];
 	
 	
 	// set can quit on setting view.
@@ -146,6 +147,24 @@ void showResponderChain(NSResponder* responder)
 	}
 }
 
+- (void)getTL {
+	[self getTL:60]; // TODO: reload interval setting
+}
+
+- (void)getTL:(int)interval {
+	// set the timer event to get TL.
+	if([reloadTimer isValid]){
+		[reloadTimer invalidate];
+	}
+	SEL aSelector = @selector(getHomeTimelineSinceID:startingAtPage:count:);
+	NSMethodSignature *signature = [twitterEngine methodSignatureForSelector:aSelector];
+	NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:signature];
+	[invocation setSelector:aSelector];
+	[invocation setTarget:twitterEngine];
+	[invocation invoke];
+	reloadTimer = [NSTimer scheduledTimerWithTimeInterval:interval invocation:invocation repeats:YES];
+}
+
 #pragma mark Main Window
 
 - (void)toggleTitleBar:(id)sender {
@@ -199,8 +218,10 @@ void showResponderChain(NSResponder* responder)
 	[twitterEngine release];
 	[connectionDictionary release];
 	[commandController release];
-	 if (statusString) [statusString release];
-	
+	if (statusString) [statusString release];
+	if([reloadTimer isValid]) [reloadTimer invalidate];
+	[window release];
+	[authWindow release];
 	[super dealloc];
 }
 
@@ -235,6 +256,25 @@ void showResponderChain(NSResponder* responder)
 	[authIndicator stopAnimation:self];
 	[self _setAuthButtons:NO];
 }
+
+- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier {
+#ifdef DEBUG
+	NSLog(@"appending statuses data");
+	NSLog([statuses description]);
+#endif
+	NSEnumerator *aEnumrator = [statuses objectEnumerator];
+	id obj;
+	while ((obj = [aEnumrator nextObject])){
+		[TLBaseDataDictionary setObject:obj forKey:[[obj objectForKey:@"id"] description]];
+#ifdef DEBUG
+		if(NO){
+			NSLog([obj description]);
+		}
+#endif
+	}
+	
+}
+
 
 - (void)connectionStarted:(NSString *)connectionIdentifier {
 	[progressIndicator startAnimation:self];
@@ -337,6 +377,10 @@ void showResponderChain(NSResponder* responder)
 		[settingsTab selectFirstTabViewItem:self];
 		[self showAuthenticateWindow:self];
 	}
+	// TODO:reload interval
+	
+	[self getTL];
+	
 	
 }
 

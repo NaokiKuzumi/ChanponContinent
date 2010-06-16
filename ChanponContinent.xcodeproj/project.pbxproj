@@ -10,6 +10,8 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* ChanponContinentAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* ChanponContinentAppDelegate.m */; };
 		3521D7EF11A7258100FD7984 /* ChanponCommandController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3521D7EE11A7258100FD7984 /* ChanponCommandController.m */; };
+		3538F3D111BA0FF10015ABAB /* ChanponTimeLineWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3538F3D011BA0FF10015ABAB /* ChanponTimeLineWindowController.m */; };
+		3538F3D411BA14D70015ABAB /* TLWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3538F3D211BA14D70015ABAB /* TLWindow.xib */; };
 		355F122D11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 355F122C11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m */; };
 		355F125711AB31A6007D19A3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355F125611AB31A6007D19A3 /* Security.framework */; };
 		35778BD211A2EADB007599D8 /* ChanponTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35778BD111A2EADB007599D8 /* ChanponTextView.m */; };
@@ -60,6 +62,9 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		3521D7ED11A7258100FD7984 /* ChanponCommandController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanponCommandController.h; sourceTree = "<group>"; };
 		3521D7EE11A7258100FD7984 /* ChanponCommandController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanponCommandController.m; sourceTree = "<group>"; };
+		3538F3CF11BA0FF10015ABAB /* ChanponTimeLineWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanponTimeLineWindowController.h; sourceTree = "<group>"; };
+		3538F3D011BA0FF10015ABAB /* ChanponTimeLineWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanponTimeLineWindowController.m; sourceTree = "<group>"; };
+		3538F3D311BA14D70015ABAB /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TLWindow.xib; sourceTree = "<group>"; };
 		355F122C11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAToken+RemoveFromKeychain.m"; sourceTree = "<group>"; };
 		355F125611AB31A6007D19A3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		35671E1511A598F800E11849 /* TwitterAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAPIKey.h; sourceTree = "<group>"; };
@@ -127,6 +132,8 @@
 				355F122C11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m */,
 				3521D7ED11A7258100FD7984 /* ChanponCommandController.h */,
 				3521D7EE11A7258100FD7984 /* ChanponCommandController.m */,
+				3538F3CF11BA0FF10015ABAB /* ChanponTimeLineWindowController.h */,
+				3538F3D011BA0FF10015ABAB /* ChanponTimeLineWindowController.m */,
 				35951B5811A5221B00BE4B20 /* Views */,
 				35951B5C11A5223400BE4B20 /* MGTwitterEngine */,
 			);
@@ -189,6 +196,7 @@
 				8D1107310486CEB800E47090 /* ChanponContinent-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				3538F3D211BA14D70015ABAB /* TLWindow.xib */,
 				35778E2611A3BD33007599D8 /* Credits.rtfd */,
 			);
 			name = Resources;
@@ -292,6 +300,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				35778E2711A3BD33007599D8 /* Credits.rtfd in Resources */,
+				3538F3D411BA14D70015ABAB /* TLWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +328,7 @@
 				35951B9F11A523AB00BE4B20 /* MGTwitterHTTPURLConnection.m in Sources */,
 				3521D7EF11A7258100FD7984 /* ChanponCommandController.m in Sources */,
 				355F122D11AB2F21007D19A3 /* OAToken+RemoveFromKeychain.m in Sources */,
+				3538F3D111BA0FF10015ABAB /* ChanponTimeLineWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +349,14 @@
 				1DDD58150DA1D0A300B32029 /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		3538F3D211BA14D70015ABAB /* TLWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3538F3D311BA14D70015ABAB /* English */,
+			);
+			name = TLWindow.xib;
 			sourceTree = "<group>";
 		};
 		35778E2611A3BD33007599D8 /* Credits.rtfd */ = {
@@ -404,6 +422,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -418,6 +437,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
