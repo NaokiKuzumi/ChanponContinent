@@ -32,11 +32,29 @@
     return self;
 }
 
-- (BOOL)becomeFirstResponder {
+- (BOOL)acceptsFirstResponder {
 	return YES;
 }
 
-- (void)keyDown:(NSEvent *)event{
+- (BOOL)acceptsFirstMouse:(NSEvent *)event {
+	return YES;
+}
+
+- (void)mouseDown:(NSEvent*)event {
+	NSWindow* window = [self window];
+	
+	if([window isKeyWindow] == NO){
+		NSUInteger style = [window styleMask];
+		[window setStyleMask:(NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask | NSTexturedBackgroundWindowMask)];
+		[window makeMainWindow];
+		[window makeKeyWindow];
+		[window makeFirstResponder:self];
+		[window setStyleMask:style];
+	}
+	[super mouseDown:event];
+}
+
+- (void)keyDown:(NSEvent *)event {
 	enum {
 		enterKey = 36,
 	};

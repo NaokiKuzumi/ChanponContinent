@@ -27,7 +27,7 @@
 
 // used only in old unofficial BASIC authentication API. They don't use these strings anymore, so it's just for fun now.
 #define CLIENT_NAME @"ChanponContinent"
-#define CLIENT_VERSION @"0.14"
+#define CLIENT_VERSION @"0.15"
 #define CLIENT_URL @"http://d.hatena.ne.jp/kudzu_naoki/20100519/1274258452"
 #define CLIENT_TOKEN nil
 // things you know
@@ -259,8 +259,10 @@ void showResponderChain(NSResponder* responder)
 
 - (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier {
 #ifdef DEBUG
-	NSLog(@"appending statuses data");
-	NSLog([statuses description]);
+	if(NO){
+		NSLog(@"appending statuses data");
+		NSLog([statuses description]);
+	}
 #endif
 	NSEnumerator *aEnumrator = [statuses objectEnumerator];
 	id obj;
@@ -379,7 +381,7 @@ void showResponderChain(NSResponder* responder)
 	}
 	// TODO:reload interval
 	
-	[self getTL];
+	//[self getTL];
 	
 	
 }

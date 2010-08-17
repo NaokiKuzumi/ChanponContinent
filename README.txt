@@ -1,4 +1,4 @@
-ちゃんぽん大陸 ver0.14
+ちゃんぽん大陸 ver0.15
 
 ちゃんぽん大陸は投稿に特化したシンプルなtwitterクライアントです。
 Objective-C2.0,Cocoaを用いて作られているためMacOSXとの相性が非常によいです。
@@ -7,6 +7,7 @@ MacOSX+AquaSKKで投稿力の変わらないただひとつのtwitterクライ�
 
 
 感想や善良な要望は@kudzu_naokiまで。
+使い方、コマンド等はHowToUse.txtを参照。
 
 
 ちゃんぽん大陸は大部分がOAuthConsumer及びMGTwitterEngineによって支えられています。

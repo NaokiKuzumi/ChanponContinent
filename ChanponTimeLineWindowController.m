@@ -22,6 +22,14 @@
 #import "ChanponTimeLineWindowController.h"
 
 
+#ifdef DEBUG
+#define BM_START(name) NSDate *name##_start = [NSDate new]
+#define BM_END(name)   NSDate *name##_end = [NSDate new];\
+NSLog(@"%s interval: %f", #name, [name##_end timeIntervalSinceDate:name##_start]);\
+[name##_start release];[name##_end release]
+
+#endif
+
 @implementation ChanponTimeLineWindowController
 static NSColor*	_whiteColor = nil;
 static NSColor*	_stripeColor = nil;
@@ -51,19 +59,27 @@ NSInteger timesort(id tweet1,id tweet2, void* context){
 	[tlTable setDataSource:self]; // not using the app delegate for filtering
 	[tlTable setDelegate:self];
 	TLData = [[NSApp delegate] TLBaseDataDictionary];
+	TLArray = [[TLData allValues] sortedArrayUsingFunction:timesort context:NULL];
 	[tlTable reloadData];
 	reloadTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(update) userInfo:nil repeats:YES];
 }
 
 - (void)update {
 	//[tlTable noteNumberOfRowsChanged];
+	TLArray = [[TLData allValues] sortedArrayUsingFunction:timesort context:NULL];
 	[tlTable reloadData];
 }
 
 #pragma mark dataSource methods
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
-    NSArray *TLArray = [[TLData allValues] sortedArrayUsingFunction:timesort context:NULL];
+#ifdef DEBUG
+	BM_START(arraysort);
+#endif
+//    NSArray *TLArray = [[TLData allValues] sortedArrayUsingFunction:timesort context:NULL];
+#ifdef DEBUG 
+	BM_END(arraysort);
+#endif
 	id theTweet,theValue;
 //	NSArray *TLArray = [TLData allValues];
 	

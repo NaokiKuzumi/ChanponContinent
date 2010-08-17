@@ -40,8 +40,10 @@
 		NSString *commandString = [statusString substringFromIndex:[identifier length]];
 		
 #ifdef DEBUG
-		NSLog(@"command came");		
-		NSLog(@"command: [%@]",commandString);
+		if(YES){
+			NSLog(@"command came");		
+			NSLog(@"command: [%@]",commandString);
+		}
 #endif	
 		
 		// :chanpon :champon command.		
@@ -97,6 +99,7 @@
 		if([commandString isEqualToString:@"tl"] || [commandString isEqualToString:@"timeline"]){
 			//[NSBundle loadNibNamed:@"TLWindow" owner:[[ChanponTimeLineWindowController alloc] init]];
 			[[[ChanponTimeLineWindowController alloc] initWithWindowNibName:@"TLWindow"] showWindow:self];
+			[delegate getTL];
 			
 			return nil;
 		}

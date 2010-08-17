@@ -25,6 +25,7 @@
 	IBOutlet NSTableView* tlTable;
 	
 	NSMutableDictionary *TLData;
+	NSArray *TLArray;
 	NSTimer *reloadTimer;
 }
 // delegate
